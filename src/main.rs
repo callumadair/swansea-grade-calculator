@@ -97,7 +97,9 @@ fn weight_and_average_4yr(grade_array_tuple: &mut ([f32; 8], [f32; 8], [f32; 8])
             grade_array_tuple.0[index] *= 3;
             grade_array_tuple.1[index] *= 2;
         }
-        sum += f32::from(grade_array_tuple.0[index] + grade_array_tuple.1[index] + grade_array_tuple.2[index]);
+        sum += f32::from(grade_array_tuple.0[index]
+            + grade_array_tuple.1[index]
+            + grade_array_tuple.2[index]);
     }
 
     return sum / total_weight;
@@ -117,7 +119,8 @@ fn weight_and_average_3yr(grade_array_tuple: &mut ([f32; 8], [f32; 8])) -> f32 {
             grade_array_tuple.0[index] *= 2;
         }
 
-        sum += f32::from(grade_array_tuple.0[index] + grade_array_tuple.1[index]);
+        sum += f32::from(grade_array_tuple.0[index]
+            + grade_array_tuple.1[index]);
     }
 
     return sum / total_weight;
