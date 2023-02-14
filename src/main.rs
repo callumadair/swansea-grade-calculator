@@ -7,14 +7,18 @@ fn main() {
     io::stdin()
         .read_line(&mut option_input)
         .expect("Failed to read line!");
-    let degree_choice: u8 = option_input.trim().parse().expect("Input is not a valid integer!");
+    let degree_choice: u8 = option_input.
+        trim().
+        parse().
+        expect("Input is not a valid integer!");
 
     match degree_choice {
         1 => calculate_3yr(),
-        
+
         2 => calculate_4yr(),
-     
-        _ => { println!("Invalid input, program exiting.");
+
+        _ => {
+            println!("Invalid input, program exiting.");
             std::process::exit(-1);
         }
     }
@@ -27,30 +31,29 @@ fn calculate_4yr() {
     println!("Overall grade for four-year advanced degree is: {}.", overall_grade);
 }
 
-fn fill_4yr() -> ([u16; 8], [u16; 8], [u16; 8]) { 
+fn fill_4yr() -> ([u16; 8], [u16; 8], [u16; 8]) {
     let mut fourth_yr_arr: [u16; 8] = [0; 8];
-    println!("Please enter your module grades for fourth year."); 
+    println!("Please enter your module grades for fourth year.");
     fill_array(&mut fourth_yr_arr);
 
     let mut third_yr_arr: [u16; 8] = [0; 8];
     println!("Please enter your module grades for third year.");
     fill_array(&mut third_yr_arr);
-    
+
     let mut second_yr_arr: [u16; 8] = [0; 8];
-    println!("Please enter your module grades for second year."); 
+    println!("Please enter your module grades for second year.");
     fill_array(&mut second_yr_arr);
 
     return (fourth_yr_arr, third_yr_arr, second_yr_arr);
 }
 
 fn calculate_3yr() {
-    
     let mut third_yr_arr: [u16; 8] = [0; 8];
     println!("Please enter your module grades for third year.");
     fill_array(&mut third_yr_arr);
-    
+
     let mut second_yr_arr: [u16; 8] = [0; 8];
-    println!("Please enter your module grades for second year."); 
+    println!("Please enter your module grades for second year.");
     fill_array(&mut second_yr_arr);
 
     let mut array_tuple = (third_yr_arr, second_yr_arr);
@@ -66,7 +69,7 @@ fn fill_array(arr: &mut [u16; 8]) -> &mut [u16; 8] {
             .read_line(&mut input_line)
             .expect("failed to read grade");
 
-       arr[index] = input_line.trim().parse().expect("Input is not a valid integer!");
+        arr[index] = input_line.trim().parse().expect("Input is not a valid integer!");
     }
     arr.sort();
     arr.reverse();
@@ -75,14 +78,13 @@ fn fill_array(arr: &mut [u16; 8]) -> &mut [u16; 8] {
 }
 
 fn weight_and_average_4yr(grade_array_tuple: &mut ([u16; 8], [u16; 8], [u16; 8])) -> f32 {
-    
     let mut sum: f32 = 0.0;
     let total_weight: f32 = 60.0;
 
 
     for index in 0..8 {
         if index < 6 {
-            grade_array_tuple.0[index] *= 4; 
+            grade_array_tuple.0[index] *= 4;
             if index < 2 {
                 grade_array_tuple.2[index] *= 2;
             }
@@ -91,7 +93,6 @@ fn weight_and_average_4yr(grade_array_tuple: &mut ([u16; 8], [u16; 8], [u16; 8])
             } else {
                 grade_array_tuple.1[index] *= 2;
             }
-            
         } else {
             grade_array_tuple.0[index] *= 3;
             grade_array_tuple.1[index] *= 2;
@@ -103,7 +104,6 @@ fn weight_and_average_4yr(grade_array_tuple: &mut ([u16; 8], [u16; 8], [u16; 8])
 }
 
 fn weight_and_average_3yr(grade_array_tuple: &mut ([u16; 8], [u16; 8])) -> f32 {
-    
     let mut sum: f32 = 0.0;
     let total_weight: f32 = 33.0;
 
