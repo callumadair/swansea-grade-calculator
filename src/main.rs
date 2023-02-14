@@ -31,16 +31,16 @@ fn calculate_4yr() {
     println!("Overall grade for four-year advanced degree is: {}.", overall_grade);
 }
 
-fn fill_4yr() -> ([u16; 8], [u16; 8], [u16; 8]) {
-    let mut fourth_yr_arr: [u16; 8] = [0; 8];
+fn fill_4yr() -> ([f32; 8], [f32; 8], [f32; 8]) {
+    let mut fourth_yr_arr: [f32; 8] = [0.0; 8];
     println!("Please enter your module grades for fourth year.");
     fill_array(&mut fourth_yr_arr);
 
-    let mut third_yr_arr: [u16; 8] = [0; 8];
+    let mut third_yr_arr: [f32; 8] = [0.0; 8];
     println!("Please enter your module grades for third year.");
     fill_array(&mut third_yr_arr);
 
-    let mut second_yr_arr: [u16; 8] = [0; 8];
+    let mut second_yr_arr: [f32; 8] = [0.0; 8];
     println!("Please enter your module grades for second year.");
     fill_array(&mut second_yr_arr);
 
@@ -48,11 +48,11 @@ fn fill_4yr() -> ([u16; 8], [u16; 8], [u16; 8]) {
 }
 
 fn calculate_3yr() {
-    let mut third_yr_arr: [u16; 8] = [0; 8];
+    let mut third_yr_arr: [f32; 8] = [0.0; 8];
     println!("Please enter your module grades for third year.");
     fill_array(&mut third_yr_arr);
 
-    let mut second_yr_arr: [u16; 8] = [0; 8];
+    let mut second_yr_arr: [f32; 8] = [0.0; 8];
     println!("Please enter your module grades for second year.");
     fill_array(&mut second_yr_arr);
 
@@ -62,7 +62,7 @@ fn calculate_3yr() {
     println!("Overall grade for three-year standard degree is: {}.", overall_grade);
 }
 
-fn fill_array(arr: &mut [u16; 8]) -> &mut [u16; 8] {
+fn fill_array(arr: &mut [f32; 8]) -> &mut [f32; 8] {
     for index in 0..8 {
         let mut input_line = String::new();
         io::stdin()
@@ -77,7 +77,7 @@ fn fill_array(arr: &mut [u16; 8]) -> &mut [u16; 8] {
     return arr;
 }
 
-fn weight_and_average_4yr(grade_array_tuple: &mut ([u16; 8], [u16; 8], [u16; 8])) -> f32 {
+fn weight_and_average_4yr(grade_array_tuple: &mut ([f32; 8], [f32; 8], [f32; 8])) -> f32 {
     let mut sum: f32 = 0.0;
     let total_weight: f32 = 60.0;
 
@@ -103,7 +103,7 @@ fn weight_and_average_4yr(grade_array_tuple: &mut ([u16; 8], [u16; 8], [u16; 8])
     return sum / total_weight;
 }
 
-fn weight_and_average_3yr(grade_array_tuple: &mut ([u16; 8], [u16; 8])) -> f32 {
+fn weight_and_average_3yr(grade_array_tuple: &mut ([f32; 8], [f32; 8])) -> f32 {
     let mut sum: f32 = 0.0;
     let total_weight: f32 = 33.0;
 
