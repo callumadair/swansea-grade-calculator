@@ -63,13 +63,16 @@ fn calculate_3yr() {
 }
 
 fn fill_array(arr: &mut [u8; 8]) -> &mut [u8; 8] {
-    for index in 0..8 {
-        let mut input_line = String::new();
-        io::stdin()
-            .read_line(&mut input_line)
-            .expect("failed to read grade");
+    let mut input_line = String::new();
+    io::stdin()
+        .read_line(&mut input_line)
+        .expect("failed to read grade");
+    let split = input_line.split_whitespace();
 
-        arr[index] = input_line.trim().parse().expect("Input is not a valid integer!");
+    let str_vec = split.collect::<Vec<&str>>();
+
+    for index in 0..8 {
+        arr[index] = str_vec[index].parse().unwrap();
     }
     arr.sort();
     arr.reverse();
